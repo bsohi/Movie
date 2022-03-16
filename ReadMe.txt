@@ -21,7 +21,7 @@ commands
 - Don't need token at this time
 
 Database
-- restore Database backup provided
+- restore Database backup provided MovieDB.baks. rename the file to MovieDB.bak
 - create user movieuser with password movieuser to access the database from API
 
 How to Use Front end
