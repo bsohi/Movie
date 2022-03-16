@@ -23,6 +23,7 @@ commands
 Database
 - restore Database backup provided MovieDB.baks. rename the file to MovieDB.bak
 - create user movieuser with password movieuser to access the database from API
+- You can add more Genre to ListValues table with CategoryId = 1
 
 How to Use Front end
 - Click on "Movies" link, it will load all the movies in the databse to the page in the grid

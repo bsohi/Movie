@@ -14,7 +14,8 @@
           <div id="movieGrid" class="col-md-12">
             <div class="row margin-v-15-0">
               <div class="col-md-12">
-                <kendo-grid #gridUser [data]="movies" [selectable]="true" [sortable]="true" (selectionChange)="gridMovieSelectionChange($event)">
+                <kendo-grid #gridUser [data]="movies" [selectable]="true" [sortable]="true" (selectionChange)="gridMovieSelectionChange($event)" [pageSize]="pageSize" [pageable]="true"
+                            (pageChange)="pageChange($event)" [skip]="skip">
                   <kendo-grid-column field="id" title="ID">
                   </kendo-grid-column>
                   <kendo-grid-column field="name" title="Name">
