@@ -51,6 +51,7 @@ import { WindowModule } from '@progress/kendo-angular-dialog';
     BrowserAnimationsModule, WindowModule,
     RouterModule.forRoot([
       /*{ path: '', component: HomeComponent, pathMatch: 'full' },*/
+      { path: '', component: MovieComponent },
       { path: 'cart', component: CartComponent },
       {
         path: 'movie', children: [
