@@ -1,0 +1,42 @@
+<div class="container" style="margin-bottom:50px;">
+  <div kendoWindowContainer></div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default paper-shadow" data-z="0.5">
+        <div class="panel-body">
+          <div class="col-md-8">
+            <h4 class="text-headline margin-none">Movies</h4>
+
+          </div>
+          <div class="col-md-4">
+            <a class="btn btn-primary pull-right" [routerLink]="['create']">Add</a>
+          </div>
+          <div id="movieGrid" class="col-md-12">
+            <div class="row margin-v-15-0">
+              <div class="col-md-12">
+                <kendo-grid #gridUser [data]="movies" [selectable]="true" [sortable]="true" (selectionChange)="gridMovieSelectionChange($event)">
+                  <kendo-grid-column field="id" title="ID">
+                  </kendo-grid-column>
+                  <kendo-grid-column field="name" title="Name">
+                  </kendo-grid-column>
+                  <kendo-grid-column field="cost" title="Cost">
+                  </kendo-grid-column>
+                  <kendo-grid-column field="salePrice" title="Sale Price">
+                  </kendo-grid-column>
+                  <kendo-grid-column field="genre" title="Genre">
+                  </kendo-grid-column>
+                  <kendo-grid-column width="100" title="Add To Cart">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                      <button class="k-button" (click)="addClick(dataItem, null)">Add</button>
+                    </ng-template>
+                  </kendo-grid-column>
+                </kendo-grid>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

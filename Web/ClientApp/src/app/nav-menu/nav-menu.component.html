@@ -1,0 +1,35 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+      <a class="nav-link text-dark" [routerLink]="['/movie']">Movies</a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end" [ngClass]="{ show: isExpanded }">
+        <!--<ul class="navbar-nav flex-grow">
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/movie']">Movies</a>
+          </li>
+        </ul>-->
+        <div class="col-lg-10 col-6 d-none d-md-block">
+          <div class="row justify-content-end">
+            <button class="my-order-badge" kendoButton [icon]="'cart'" (click)="gotoMyCart(windowTitleBar)">
+              <h6 class="my-cart-label">My Cart</h6><span class="badge badge-light">{{ totalCount }}</span>
+            </button>
+          </div>
+          <div class="row justify-content-end">
+            <div *ngIf="totalCount > 0">
+              <h6 class="badge my-order-badge"> MY ORDER ${{totalCost | number:'1.2-2'}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

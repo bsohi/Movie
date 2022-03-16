@@ -1,3 +1,0 @@
-# parachute-lms
-
-LMS

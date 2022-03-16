@@ -1,0 +1,25 @@
+<div class="container-fluid dialog-main-container">
+  <div class="row dialog-body">
+    <div class="col-12">
+      <div class="row">
+        <dl class="col-12">
+          <dd class="pl-0 pr-0 col-12">{{ item.name }}</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <hr>
+    <div class="row">
+      <div class="col-lg-6 col-6">
+        <button type="button" class="mt-1 ml-1 mr-1 k-button k-primary rounded-circle" (click)="increaseDecreaseQuantity(-1)" [ngStyle]="{width:'35px'}">-</button>
+        <kendo-numerictextbox #quantityInput class="quantity" [spinners]="false" [value]="quantity" [min]="1" [max]="10" [format]="'n'" (valueChange)="updateQuantity($event,quantityInput)" [ngStyle]="{width:'30%'}">
+        </kendo-numerictextbox>
+        <button type="button" class="mt-1 ml-1 k-button k-primary rounded-circle" (click)="increaseDecreaseQuantity(1)">+</button>
+      </div>
+      <div class="col-lg-6 col-6">
+        <button type="button" class="mt-1 ml-1 k-button k-primary float-right" (click)="addItemToCart()">Add to Order</button>
+      </div>
+    </div>
+  </footer>
+</div>

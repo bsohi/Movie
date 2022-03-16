@@ -1,0 +1,91 @@
+<div class="row mb-9" *ngIf="show()">
+  <div kendoWindowContainer></div>
+  <div class="card-list col-lg-8 mb-3 mb-lg-0">
+    <kendo-card [width]="'100%'">
+      <kendo-card-header class="k-hbox">
+        <div>
+          <h1 kendoCardTitle>Order Summary</h1>
+        </div>
+      </kendo-card-header>
+      <kendo-card-body class="p-0">
+        <div class="list-group">
+          <div class="list-group-item flex-column align-items-start p-3" *ngFor="let item of items">
+            <div class="col-lg-12">
+              <div class="row d-flex w-100 justify-content-between">
+                <div class="col-lg-4">
+                  <div class="row">
+                    <div class="col-lg-12 d-flex mb-1 pl-0">
+                      <img *ngIf="item.ThumbnailUrl" src='{{item.ThumbnailUrl}}' alt='' width="111" height="83" draggable="false" class="rounded" />
+                      <dl *ngIf="!item.ThumbnailUrl">
+                        <dd class="pl-0 col-sm-12 line-break">{{ item.Description }}</dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-8">
+                  <div class="row">
+                    <div class="col-lg-8 col-7">
+                      <h1 kendoCardTitle>{{ item.name }}<small>({{item.quantity}} @ {{item.salePrice | number:'1.2-2'}})</small></h1>
+                    </div>
+                    <div class="col-lg-4 col-5">
+                      <div class="row justify-content-end">
+                        <label class="font-weight-bold float-right">${{item.salePrice * item.quantity | number:'1.2-2'}}</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col-lg-10 col-12">
+                      <button kendoButton [icon]="'edit'" (click)="editItem(item, null)"></button>
+                      &nbsp;
+                      <button kendoButton [icon]="'trash'" (click)="removeItem(item)"></button>
+                      <kendo-numerictextbox class="col-lg-4 col-6" [value]="item.quantity" [min]="1" [max]="10" [format]="'n'" [autoCorrect]="true" (valueChange)="updateQuantity($event, item)">
+                      </kendo-numerictextbox>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </kendo-card-body>
+    </kendo-card>
+  </div>
+  <div class="col-lg-4">    
+    <kendo-card [width]="'100%'">
+      <div class="">
+        <kendo-card-header class="k-hbox">
+          <div>
+            <h1 kendoCardTitle>Amount</h1>
+          </div>
+        </kendo-card-header>
+        <kendo-card-body>
+          <div class="row">
+            <div class="col-lg-8 col-7">
+              Subtotal
+            </div>
+            <div class="col-lg-4 col-5">
+              ${{subtotal | number:'1.2-2' }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-7">
+              HST
+            </div>
+            <div class="col-lg-4 col-5">
+              ${{hst | number:'1.2-2' }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-7">
+              Total
+            </div>
+            <div class="col-lg-4 col-5">
+              ${{total | number:'1.2-2' }}
+            </div>
+          </div>
+        </kendo-card-body>
+      </div>
+    </kendo-card>
+  </div>
+</div>
