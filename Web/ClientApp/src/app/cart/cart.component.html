@@ -51,7 +51,7 @@
       </kendo-card-body>
     </kendo-card>
   </div>
-  <div class="col-lg-4">    
+  <div class="col-lg-4">
     <kendo-card [width]="'100%'">
       <div class="">
         <kendo-card-header class="k-hbox">
@@ -87,5 +87,47 @@
         </kendo-card-body>
       </div>
     </kendo-card>
+    
+    <kendo-card [width]="'100%'">
+      <div class="">
+        <kendo-card-header class="k-hbox">
+          <div>
+            <h1 kendoCardTitle>Payment</h1>
+          </div>
+        </kendo-card-header>
+        <kendo-card-body>
+          <div class="row">
+            <kendo-label text="Payment Method"></kendo-label>
+            <kendo-dropdownlist [data]="paymentMethods" (selectionChange)="selectionChange($event)"></kendo-dropdownlist>
+          </div>
+          <div class="row" *ngIf="showCardText">
+            <kendo-label text="Name on Card"></kendo-label>
+            <input kendoTextBox #name required />
+          </div>
+          <div class="row" *ngIf="showCardText">
+            <kendo-label text="Card#"></kendo-label>
+            <kendo-maskedtextbox [mask]="card" [value]="value"></kendo-maskedtextbox>
+          </div>
+          <div class="row" *ngIf="showCardText">
+            <kendo-label text="Expiry Date"></kendo-label>
+            <kendo-maskedtextbox [mask]="expiryDate" [value]="value"></kendo-maskedtextbox>
+          </div>
+          <div class="row">
+            <kendo-label text="Amount"></kendo-label>
+            <kendo-numerictextbox [value]="amount" [min]="0.00" (valueChange)="onAmountChange($event)"></kendo-numerictextbox>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-7">
+              Balance
+            </div>
+            <div class="col-lg-4 col-5">
+              ${{balance | number:'1.2-2' }}
+            </div>
+          </div>
+        </kendo-card-body>
+      </div>
+    </kendo-card>
+    <br />
+    <button id="save" class="btn btn-primary pull-right" (click)="print()">Print</button>
   </div>
 </div>

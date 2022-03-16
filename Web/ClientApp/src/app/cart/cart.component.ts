@@ -14,7 +14,12 @@ import * as $ from 'jquery';
 })
 export class CartComponent {
   @Input() public items: Movie[];
-  
+
+  paymentMethods: Array<string> = ["Cash", "Cheque", "Credit Card"];
+  amount: number = 0;
+  public card = "9999 9000 9900 0000";
+  public expiryDate = "99/99";
+  showCardText = false;
   constructor(private cartService: CartService, private commonService: CommonService, private intl: IntlService, private router: Router) {
     this.items = this.cartService.getItems();
   }
@@ -33,6 +38,10 @@ export class CartComponent {
 
   get total() {
     return this.cartService.getTotal();
+  }
+
+  get balance() {
+    return this.total - this.amount;
   }
 
   isAddOnOptionNumber(option) {
@@ -54,7 +63,23 @@ export class CartComponent {
       this.router.navigate(['/movie']);
     }
   }
-  
+
+  onAmountChange(value: number) {
+    var strAmount = value.toFixed(2);
+    this.amount = Number(strAmount);
+    this.commonService.setLocalStorageItems("amount", this.amount);
+  }
+
+  public selectionChange(value: any): void {
+    this.showCardText = false;
+    if (value == "Credit Card") {
+      this.showCardText = true;
+    }
+  }
+
+  print() {
+    window.print();
+  }
   // and don't forget to unsubscribe
   ngOnDestroy() {
     //this.commonService.subscriptionForLocation.unsubscribe();
